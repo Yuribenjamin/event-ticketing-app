@@ -1,0 +1,70 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Event {
+  id: ID!
+  name: String!
+  date: DateTime!
+  totalTickets: Int!
+  availableTickets: Int!
+  isFutureEvent: Boolean!
+  isSoldOut: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: String!
+  name: String!
+  email: String!
+}
+
+type Order {
+  id: String!
+  orderNumber: String!
+  event: Event!
+  eventId: String!
+  user: User!
+  userId: String!
+  ticketCount: Int!
+  createdAt: DateTime!
+  purchaseDate: DateTime!
+  status: String!
+}
+
+type Query {
+  getEvents: [Event!]!
+  getEvent(id: String!): Event!
+  getOrders: [Order!]!
+  getUsers: [User!]!
+  getUser(id: String!): User!
+}
+
+type Mutation {
+  createEvent(createEvent: CreateEventDto!): Event!
+  purchaseTickets(purchaseTicketsData: PurchaseTicketsDto!): Order!
+  createUser(createUser: CreateUserDto!): User!
+}
+
+input CreateEventDto {
+  name: String!
+  date: DateTime!
+  totalTickets: Int!
+  availableTickets: Int!
+  isSoldOut: Boolean = false
+}
+
+input PurchaseTicketsDto {
+  eventId: String!
+  userId: String!
+  ticketCount: Int!
+}
+
+input CreateUserDto {
+  name: String!
+  email: String!
+}

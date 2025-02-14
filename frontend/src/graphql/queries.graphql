@@ -1,0 +1,27 @@
+query GetEvents {
+  getEvents {
+    id
+    name
+    date
+    availableTickets
+    isSoldOut
+  }
+}
+
+query GetEvent($id: String!) {
+  getEvent(id: $id) {
+    id
+    name
+    date
+    availableTickets
+    isSoldOut
+  }
+}
+
+query GetUsers {
+  getUsers {
+    id
+    name
+    email
+  }
+}

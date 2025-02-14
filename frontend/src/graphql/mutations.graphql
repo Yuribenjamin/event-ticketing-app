@@ -1,0 +1,17 @@
+mutation PurchaseTickets($purchaseTicketsData: PurchaseTicketsDto!) {
+  purchaseTickets(purchaseTicketsData: $purchaseTicketsData) {
+    orderNumber
+    event {
+      name
+    }
+    ticketCount
+  }
+}
+
+mutation CreateUser($Name: String!, $Email: String! ) {
+  createUser(createUser: { name: $Name, email: $Email }) {
+    id
+    name
+    email
+  }
+}
